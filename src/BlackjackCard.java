@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -14,6 +15,21 @@ public class BlackjackCard {
     public final static int HEARTS   = 3;
     public final static int SPADES   = 4;
 
+    // Kinds of ranks
+    public final static int ACE   = 1;
+    public final static int DEUCE = 2;
+    public final static int THREE = 3;
+    public final static int FOUR  = 4;
+    public final static int FIVE  = 5;
+    public final static int SIX   = 6;
+    public final static int SEVEN = 7;
+    public final static int EIGHT = 8;
+    public final static int NINE  = 9;
+    public final static int TEN   = 10;
+    public final static int JACK  = 11;
+    public final static int QUEEN = 12;
+    public final static int KING  = 13;
+
     public BlackjackCard(Random random) {
         suit = random.nextInt(4)+1;
         rank = random.nextInt(13)+1;
@@ -21,8 +37,71 @@ public class BlackjackCard {
 
     }
 
-    public int getRank() {
-        return rank;
+    //Get the rank in a blackjack system
+    public int[] getRank() {
+        //System.out.println("Rank: " + Arrays.toString(blackjackRank[rank]));
+        return blackjackRank[rank];
+    }
+
+    static final int[][] blackjackRank = {
+            {0},{1,10},{2},{3},{4},{5},{6},{7},{8},{9},{10},{10},{10},{10}};
+
+    protected void switchHidden(){
+        hidden = !hidden;
+    }
+
+    public boolean isHidden(){
+        return hidden;
+    }
+
+    public String toString(){
+
+        if(this.isHidden()){
+            return "Hidden card";
+        }
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(rankToString(rank));
+        stringBuilder.append(" of ");
+        stringBuilder.append(this.getSuit());
+
+        return  stringBuilder.toString();
+    }
+
+    public static String rankToString(int rank) {
+        switch (rank) {
+            case ACE:
+                return "Ace";
+            case DEUCE:
+                return "Deuce";
+            case THREE:
+                return "Three";
+            case FOUR:
+                return "Four";
+            case FIVE:
+                return "Five";
+            case SIX:
+                return "Six";
+            case SEVEN:
+                return "Seven";
+            case EIGHT:
+                return "Eight";
+            case NINE:
+                return "Nine";
+            case TEN:
+                return "Ten";
+            case JACK:
+                return "Jack";
+            case QUEEN:
+                return "Queen";
+            case KING:
+                return "King";
+            default:
+                //Handle an illegal argument.  There are generally two
+                //ways to handle invalid arguments, throwing an exception
+                //(see the section on Handling Exceptions) or return null
+                return null;
+        }
     }
 
     public String getSuit() {
@@ -38,13 +117,5 @@ public class BlackjackCard {
             default:
                 return null;
         }
-    }
-
-    protected void switchHidden(){
-        hidden = !hidden;
-    }
-
-    public boolean isHidden(){
-        return hidden;
     }
 }
