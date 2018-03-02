@@ -60,6 +60,7 @@ public class BlackjackGame {
                 //TODO dont allow anything other than int
                 int decision = scanner.nextInt();
 
+                //TODO add split decision
                 switch (decision) {
                     case 1:
                         p.hit(random);

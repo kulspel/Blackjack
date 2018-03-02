@@ -3,6 +3,8 @@ import java.util.Random;
 /**
  * Created by Kulspel on 2018-03-02.
  */
+
+//TODO add dealer behaviour
 public class Dealer{
     private Player dealer;
 
