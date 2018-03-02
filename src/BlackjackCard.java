@@ -6,6 +6,7 @@ import java.util.Random;
 public class BlackjackCard {
     private int suit;
     private int rank;
+    private boolean hidden;
 
     // Kinds of suits
     public final static int DIAMONDS = 1;
@@ -16,10 +17,10 @@ public class BlackjackCard {
     public BlackjackCard(Random random) {
         suit = random.nextInt(4)+1;
         rank = random.nextInt(13)+1;
+        hidden = false;
 
     }
 
-    //Returns the value of the card in a blackjack system
     public int getRank() {
         return rank;
     }
@@ -37,5 +38,13 @@ public class BlackjackCard {
             default:
                 return null;
         }
+    }
+
+    protected void switchHidden(){
+        hidden = !hidden;
+    }
+
+    public boolean isHidden(){
+        return hidden;
     }
 }
