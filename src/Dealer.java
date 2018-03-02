@@ -4,6 +4,8 @@ import java.util.Random;
 /**
  * Created by Kulspel on 2018-03-02.
  */
+
+//TODO implement inheritance from player?
 public class Dealer{
     private Player dealer;
 

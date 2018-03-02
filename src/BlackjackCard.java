@@ -4,6 +4,8 @@ import java.util.Random;
 /**
  * Created by Kulspel on 2018-03-02.
  */
+
+//TODO implement inheritance from Card
 public class BlackjackCard {
     private int suit;
     private int rank;

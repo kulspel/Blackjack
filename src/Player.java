@@ -63,6 +63,8 @@ public class Player {
     }
 
     //TODO add The Ace is always valued at 11 unless that would result in the hand going over 21, in which case it is valued as 1
+    //TODO implement score as an attribute and update when hitting
+    //TODO Add trimScore func
     public int[] getScore() {
         int[] scores = new int[1];
 
