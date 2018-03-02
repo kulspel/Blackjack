@@ -44,10 +44,14 @@ public class BlackjackCard {
     }
 
     static final int[][] blackjackRank = {
-            {0},{1,10},{2},{3},{4},{5},{6},{7},{8},{9},{10},{10},{10},{10}};
+            {0},{1,11},{2},{3},{4},{5},{6},{7},{8},{9},{10},{10},{10},{10}};
 
-    protected void switchHidden(){
-        hidden = !hidden;
+    protected void setHidden(){
+        hidden = true;
+    }
+
+    protected void revealCard(){
+        hidden = false;
     }
 
     public boolean isHidden(){

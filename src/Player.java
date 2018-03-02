@@ -7,18 +7,18 @@ import java.util.Random;
 public class Player {
     private int balance;
     private ArrayList<BlackjackCard> cards;
-    private int roundScore;
+    //private int roundScore;
 
     protected Player() {
         balance = Integer.MAX_VALUE;
         cards = new ArrayList<BlackjackCard>(2);
-        roundScore = 0;
+        //roundScore = 0;
     }
 
     public Player(int deposit) {
         balance = deposit;
         cards = new ArrayList<BlackjackCard>(2);
-        roundScore = 0;
+        //roundScore = 0;
     }
 
     public void addCard(BlackjackCard card) {
@@ -53,21 +53,25 @@ public class Player {
     public boolean isFat() {
         boolean isFat=true;
         int[] scores = this.getScore();
-
         for(int i:scores){
             if(i<=21){
                 isFat = false;
+                //System.out.println("You're fat!");
             }
         }
-
         return isFat;
     }
 
+    //TODO add The Ace is always valued at 11 unless that would result in the hand going over 21, in which case it is valued as 1
     public int[] getScore() {
         int[] scores = new int[1];
 
         for (BlackjackCard c : cards) {
-            int[] cardScore = c.getRank();
+            int[] cardScore = new int[1];
+
+            if(c.isHidden()) cardScore[0] = 0;
+            else cardScore  = c.getRank();
+
             //This if statement is basically if statement is basically if there is an ace
             if (cardScore.length > 1) {
                 scores = doubleSize(scores);
@@ -94,5 +98,19 @@ public class Player {
             tmp[array.length + i] = array[i];
         }
         return tmp;
+    }
+
+    public String getLastCard() {
+        return cards.get(cards.size()-1).toString();
+    }
+
+    protected void reveal() {
+        for(BlackjackCard c: cards){
+            c.revealCard();
+        }
+    }
+
+    protected ArrayList<BlackjackCard> getCardList(){
+        return cards;
     }
 }

@@ -8,8 +8,7 @@ public class Main {
         //BlackjackCard blackjackCard= new BlackjackCard(random);
         //System.out.println(blackjackCard.getRank() + '\n');
 
-        //////////////
-        int nrOfPlayers = 10;
+        int nrOfPlayers = 1;
         BlackjackGame bG = new BlackjackGame(nrOfPlayers);
 
         for(int i = 1; i<=nrOfPlayers;i++){
@@ -18,6 +17,8 @@ public class Main {
         }
 
         bG.deal();
+        //TODO add insurance protocol
         bG.playerRound();
+        bG.dealerRound();
     }
 }
