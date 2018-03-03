@@ -6,6 +6,12 @@ import java.util.Scanner;
 /**
  * Created by Kulspel on 2018-03-02.
  */
+
+/**
+ * TODO implement simpleblackjackGame that inherits from blackjackgame, or maybe the other way around, make
+ * blackjackgame inherit from simpleblackjack. Implement hardcoreblackjackgame with all functionalities, double down
+ * split etc and put that into the inheritance chain
+ */
 //TODO add Payouts
 public class BlackjackGame {
     private ArrayList<Player> playerList;
