@@ -119,6 +119,8 @@ public class BlackjackGame {
 
 
     //TODO add dealer behaviour, hard or soft 17/18
+    //TODO fix dealer behaviour involving aces
+    //TODO Fix the entire dealer behaviour use the implementation of bestscore?
     public void dealerRound() {
         System.out.println("Dealers' turn" + '\n');
         dealer.reveal();
@@ -152,7 +154,7 @@ public class BlackjackGame {
         }
 
     }
-    
+
     public void payout() {
         int playerNumber = 0;
 
