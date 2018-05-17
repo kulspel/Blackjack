@@ -50,4 +50,12 @@ public class Dealer{
     public boolean isFat() {
         return dealer.isFat();
     }
+
+    public int getBestScore() {
+        return dealer.getBestScore();
+    }
+
+    public void resetCards() {
+        dealer.resetCards();
+    }
 }

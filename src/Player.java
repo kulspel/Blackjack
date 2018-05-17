@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -5,17 +6,17 @@ import java.util.Random;
  * Created by Kulspel on 2018-03-02.
  */
 public class Player {
-    private int balance;
+    private BigDecimal balance;
     private ArrayList<BlackjackCard> cards;
     //private int roundScore;
 
     protected Player() {
-        balance = Integer.MAX_VALUE;
+        balance = new BigDecimal(999999999);
         cards = new ArrayList<BlackjackCard>(2);
         //roundScore = 0;
     }
 
-    public Player(int deposit) {
+    public Player(BigDecimal deposit) {
         balance = deposit;
         cards = new ArrayList<BlackjackCard>(2);
         //roundScore = 0;
@@ -51,10 +52,10 @@ public class Player {
     }
 
     public boolean isFat() {
-        boolean isFat=true;
+        boolean isFat = true;
         int[] scores = this.getScore();
-        for(int i:scores){
-            if(i<=21){
+        for (int i : scores) {
+            if (i <= 21) {
                 isFat = false;
                 //System.out.println("You're fat!");
             }
@@ -71,8 +72,8 @@ public class Player {
         for (BlackjackCard c : cards) {
             int[] cardScore = new int[1];
 
-            if(c.isHidden()) cardScore[0] = 0;
-            else cardScore  = c.getRank();
+            if (c.isHidden()) cardScore[0] = 0;
+            else cardScore = c.getRank();
 
             //This if statement is basically if statement is basically if there is an ace
             if (cardScore.length > 1) {
@@ -103,16 +104,39 @@ public class Player {
     }
 
     public String getLastCard() {
-        return cards.get(cards.size()-1).toString();
+        return cards.get(cards.size() - 1).toString();
     }
 
     protected void reveal() {
-        for(BlackjackCard c: cards){
+        for (BlackjackCard c : cards) {
             c.revealCard();
         }
     }
 
-    protected ArrayList<BlackjackCard> getCardList(){
-        return cards;
+    protected ArrayList<BlackjackCard> getCardList() { return cards; }
+
+    public BigDecimal getBalance() { return balance; }
+
+    public void bet(BigDecimal bet) {
+        balance = balance.subtract(bet);
+    }
+
+    protected void payout(BigDecimal payout){
+        balance = balance.add(payout);
+    }
+
+    public int getBestScore() {
+        int bestScore = 0;
+        int[] score = getScore();
+        for(int s : score){
+           if(s>bestScore && s<=21) {
+               bestScore = s;
+           }
+        }
+        return bestScore;
+    }
+
+    public void resetCards() {
+        cards = new ArrayList<BlackjackCard>(2);
     }
 }

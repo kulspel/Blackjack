@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.util.Random;
 
 public class Main {
@@ -12,13 +13,20 @@ public class Main {
         BlackjackGame bG = new BlackjackGame(nrOfPlayers);
 
         for(int i = 1; i<=nrOfPlayers;i++){
-            Player p = new Player();
+            Player p = new Player(new BigDecimal("10"));
             bG.addPlayer(p);
         }
 
-        bG.deal();
-        //TODO add insurance protocol
-        bG.playerRound();
-        bG.dealerRound();
+        for(int i = 1; i<=10;i++) {
+            bG.bet();
+            bG.deal();
+            //TODO add insurance protocol
+            bG.playerRound();
+            bG.dealerRound();
+            bG.payout();
+        }
+
+
+        bG.postWinnings();
     }
 }
